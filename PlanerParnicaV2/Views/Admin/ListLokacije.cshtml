@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Lokacija>;
+@{
+    ViewBag.Title = "Sve lokacije";
+}
+
+<a asp-action="CreateLokacija" asp-controller="Admin" class="btn btn-primary">
+    Dodaj lokaciju
+</a>
+@if (Model.Any())
+{
+    <div asp-validation-summary="All"></div>
+    foreach (var lokacija in Model)
+    {
+        <div class="col-md-12">
+            <div class="col-md-1">
+                @lokacija.Id
+            </div>
+            <div class="col-md-1">
+                @lokacija.Naslov
+            </div>
+            <div class="col-md-2" style="align-self:end">
+                <form asp-action="DeleteLokacija" asp-route-Id="@lokacija.Id" method="post">
+                    <a asp-action="EditLokacija" asp-controller="Admin" asp-route-Id="@lokacija.Id" class="btn btn-primary">Izmeni</a>
+                    <button type="submit" class="btn btn-danger">Obrisi</button>
+                </form>
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<TipPostupka>;
+@{
+    ViewBag.Title = "Sve lokacije";
+}
+
+<a asp-action="CreateTipPostupka" asp-controller="Admin" class="btn btn-primary">
+    Dodaj tip postupka
+</a>
+@if (Model.Any())
+{
+    <div asp-validation-summary="All"></div>
+    foreach (var tipPostupka in Model)
+    {
+        <div class="col-md-12">
+            <div class="col-md-1">
+                @tipPostupka.Id
+            </div>
+            <div class="col-md-1">
+                @tipPostupka.Naslov
+            </div>
+            <div class="col-md-2" style="align-self:end">
+                <form asp-action="DeleteTipPostupka" asp-route-Id="@tipPostupka.Id" method="post">
+                    <a asp-action="EditTipPostupka" asp-controller="Admin" asp-route-Id="@tipPostupka.Id" class="btn btn-primary">Izmeni</a>
+                    <button type="submit" class="btn btn-danger">Obrisi</button>
+                </form>
+            </div>
+        </div>
+    }
+}

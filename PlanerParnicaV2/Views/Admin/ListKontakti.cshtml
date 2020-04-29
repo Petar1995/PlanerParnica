@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Kontakt>;
+@{
+    ViewBag.Title = "Svi kontakti";
+}
+<a asp-action="CreateKontakt" asp-controller="Admin" class="btn btn-primary">
+    Dodaj kontakt
+</a>
+<a asp-action="ListKompanije" asp-controller="Admin" class="btn btn-primary">
+    Lista kompanija
+</a>
+@if (Model.Any())
+{
+    <div class="col-md-12">
+        <div class="col-md-1">
+            Ime
+        </div>
+        <div class="col-md-2">
+           Email
+        </div>
+        <div class="col-md-1">
+            Zanimanje
+        </div>
+        <div class="col-md-1">
+            Telefon1
+        </div>
+        <div class="col-md-1">
+            Telefon2
+        </div>
+        <div class="col-md-1">
+            Naziv firme
+        </div>
+        <div class="col-md-1">
+            Adresa firme
+        </div>
+    </div>
+    <div asp-validation-summary="All"></div>
+    foreach (var kontakt in Model)
+    {
+
+<div class="col-md-12">
+    <div class="col-md-1">
+        @kontakt.Ime
+    </div>
+    <div class="col-md-2">
+        @kontakt.Email
+    </div>
+    <div class="col-md-1">
+        @kontakt.Zanimanje
+    </div>
+    <div class="col-md-1">
+        @kontakt.Telefon1
+    </div>
+    <div class="col-md-1">
+        @kontakt.Telefon2
+    </div>
+    @if (kontakt.PripadnostKompaniji != null)
+    {
+        <div class="col-md-1">
+            @kontakt.PripadnostKompaniji.Naziv
+        </div>
+        <div class="col-md-1">
+            @kontakt.PripadnostKompaniji.Adresa
+        </div>
+    }
+    else
+    {
+        <div class="col-md-1">
+           
+        </div>
+        <div class="col-md-1">
+
+        </div>
+    }
+
+
+    <div class="col-md-2" style="align-self:end">
+        <form asp-action="DeleteKontakt" asp-route-Id="@kontakt.Id" method="post">
+            <a asp-action="EditKontakt" asp-controller="Admin" asp-route-Id="@kontakt.Id" class="btn btn-primary">Izmeni</a>
+            <button type="submit" class="btn btn-danger">Obrisi</button>
+        </form>
+    </div>
+</div>
+    }
+}

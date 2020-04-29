@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Kompanija>;
+@{
+    ViewBag.Title = "Sve kompanije";
+}
+@if (Model.Any())
+{
+    <div asp-validation-summary="All"></div>
+    foreach (var kompanija in Model)
+    {
+        <div class="col-md-12">
+            <div class="col-md-1">
+                @kompanija.Id
+            </div>
+            <div class="col-md-1">
+                @kompanija.Naziv
+            </div>
+            <div class="col-md-1">
+                @kompanija.Adresa
+            </div>
+            <div class="col-md-2" style="align-self:end">
+                <form asp-action="DeleteKompanija" asp-route-Id="@kompanija.Id" method="post">
+                    <a asp-action="EditKompanija" asp-controller="Admin" asp-route-Id="@kompanija.Id" class="btn btn-primary">Izmeni</a>
+                    <button type="submit" class="btn btn-danger">Obrisi</button>
+                </form>
+            </div>
+        </div>
+    }
+}

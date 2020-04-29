@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Korisnik>;
+@{
+    ViewBag.Title = "Svi korisnici";
+}
+<a asp-action="CreateKorisnik" asp-controller="Admin" class="btn btn-primary">
+    Dodaj korisnika
+</a>
+@if (Model.Any())
+{
+    <div class="col-md-12">
+        <div class="col-md-2">
+            <b>Korisnicko ime</b>
+        </div>
+        <div class="col-md-2">
+            <b>Ime</b>
+        </div>
+        <div class="col-md-2">
+            <b>Prezime</b>
+        </div>
+    </div>
+    <div asp-validation-summary="All"></div>
+    foreach (var korisnik in Model)
+    {
+        <div class="col-md-12">
+            <div class="col-md-2">
+                @korisnik.UserName
+            </div>
+            <div class="col-md-2">
+                @korisnik.Ime
+            </div>
+            <div class="col-md-2">
+                @korisnik.Prezime
+            </div>
+            <div class="col-md-2" style="align-self:end">
+                <form asp-action="DeleteKorisnik" asp-route-Id="@korisnik.Id" method="post">
+                    <a asp-action="EditKorisnik" asp-controller="Admin" asp-route-UserName="@korisnik.UserName" class="btn btn-primary">Izmeni</a>
+                    <button type="submit" class="btn btn-danger">Obrisi</button>
+                </form>
+            </div>
+        </div>
+    }
+}

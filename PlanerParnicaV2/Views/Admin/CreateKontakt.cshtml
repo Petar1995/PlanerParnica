@@ -1,0 +1,57 @@
+﻿@model KontaktViewModel
+
+@{
+    ViewBag.Title = "Dodaj kontakt";
+}
+
+<h1>Dodaj kontakt</h1>
+
+<div class=" row">
+    <div class="col-md-12">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Ime"></label>
+                <input asp-for="Ime" class="form-control" />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefon1"></label>
+                <input asp-for="Telefon1" class="form-control" />
+                <span asp-validation-for="Telefon1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefon2"></label>
+                <input asp-for="Telefon2" class="form-control" />
+                <span asp-validation-for="Telefon2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Zanimanje"></label>
+                <input asp-for="Zanimanje" class="form-control" />
+                <span asp-validation-for="Zanimanje" class="text-danger"></span>
+            </div>
+            <div class=" form-group">
+                <label asp-for="TipLica">Tip Lica</label>
+                <select  asp-for="TipLica" asp-items="Html.GetEnumSelectList<TipLica>()"></select>
+                <span asp-validation-for="TipLica" class="text-danger"></span>
+            </div>
+            <div class="form-group" >
+                <label asp-for="PripadaKompaniji"></label>
+                <input type="checkbox" asp-for="PripadaKompaniji" />
+                <div class="form-group" hidden id="KompanijaNaziv">
+                    <label asp-for="KompanijaNaziv">Naziv kompanije</label>
+                    <input asp-for="KompanijaNaziv" class="form-control"/>
+                </div>
+                <div class="form-group" id="KompanijaAdresa" hidden>
+                    <label asp-for="KompanijaAdresa">Adresa kompanije</label>
+                    <input asp-for="KompanijaAdresa" class="form-control"/>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Dodaj</button>
+        </form>
+    </div>
+</div>

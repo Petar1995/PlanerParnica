@@ -1,0 +1,29 @@
+﻿@model KompanijaViewModel
+
+@{
+    ViewBag.Title = "Izmeni kompaniju";
+}
+
+<h1>Izmeni kompanijiu</h1>
+
+<div class=" row">
+    <div class="col-md-12">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Id"></label>
+                <input asp-for="Id" readonly class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Naziv"></label>
+                <input asp-for="Naziv" class="form-control" />
+                <span asp-validation-for="Naziv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adresa"></label>
+                <input asp-for="Adresa" class="form-control" />
+                <span asp-validation-for="Adresa" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Izmeni</button>
+        </form>
+    </div>
+</div>

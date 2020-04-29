@@ -1,0 +1,97 @@
+﻿@model MojeParniceViewModel
+@{
+    ViewData["Title"] = "MojeParnice";
+}
+
+<a asp-action="CreateParnica" asp-controller="Korisnik" class="btn btn-primary">
+    Dodaj parnicu
+</a>
+
+<div class="col-md-12">
+    <h4>Search</h4>
+    <div class="col-md-12">
+        <form asp-action="MojeParnice" asp-controller="Korisnik" method="get">
+            <div class="col-md-6">
+                <label asp-for="SearchIdentifikator">Identifikator</label>
+                <input asp-for="SearchIdentifikator" />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="SearchLokacijaOdrzavanja">Mesto odrzavanja</label>
+                <input asp-for="SearchLokacijaOdrzavanja" />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="SearchTuzilac">Tuzilac</label>
+                <input asp-for="SearchTuzilac" />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="SearchTuzeni">Tuzeni</label>
+                <input asp-for="SearchTuzeni" />
+            </div>
+            <div class="col-md-12" style="align-self:end">
+                <button type="submit" class="btn btn-warning">Pretrazi</button>
+                <a asp-action="MojeParnice" asp-controller="Korisnik" class="btn btn-primary">Resetuj pretragu</a>
+            </div>
+        </form>
+        
+    </div>
+</div>
+    <div asp-validation-summary="All"></div>
+    <table style="width:100%">
+        <tr>
+            <th>Identifikator</th>
+            <th>Lokacija odrzavanja</th>
+            <th>Vreme odrzavanja</th>
+            <th>Sudija</th>
+            <th>Tip ustanove</th>
+            <th>Broj sudnice</th>
+            <th>Tuzilac</th>
+            <th>Tuzeni</th>
+            <th>Napomena</th>
+            <th>Tip postupka</th>
+        </tr>
+        @foreach (var parnica in Model.Parnice)
+        {
+    <tr>
+        <td>
+            @parnica.Parnica.IdentifikatorPostupka
+        </td>
+        <td class="col-md-1">
+            @parnica.Parnica.LokacijaOdrzavanja.Naslov
+        </td>
+        <td class="col-md-1">
+            @parnica.Parnica.VremeOdrzavanja
+        </td>
+        <td>
+            @parnica.Parnica.Sudija.Ime
+        </td>
+        <td>
+            @parnica.Parnica.TipUstanove
+        </td>
+        <td>
+            @parnica.Parnica.BrojSudnice
+        </td>
+        <td>
+            @parnica.Parnica.Tuzilac.Ime
+        </td>
+        <td>
+            @parnica.Parnica.Tuzeni.Ime
+        </td>
+        <td>
+            @parnica.Parnica.Napomena
+        </td>
+        <td>
+            @parnica.Parnica.TipPostupka.Naslov
+        </td>
+        <td class="col-md-2" style="align-self:end">
+            <form asp-action="DeleteParnica" asp-controller="Korisnik" asp-route-Id="@parnica.Parnica.Id" method="post">
+                <a asp-action="EditParnica" asp-controller="Korisnik" asp-route-Id="@parnica.Parnica.Id" class="btn btn-primary">Izmeni</a>
+                <button type="submit" class="btn btn-danger">Obrisi</button>
+            </form>
+        </td>
+    </tr>
+
+        }
+    </table>
+<div id="Kalendar">
+
+</div>

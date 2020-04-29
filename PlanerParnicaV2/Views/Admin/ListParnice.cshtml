@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Parnica>
+@{
+    ViewData["Title"] = "SveParnice";
+}
+@if (Model.Any())
+{
+    <div asp-validation-summary="All"></div>
+        <div asp-validation-summary="All"></div>
+        <table style="width:100%">
+            <tr>
+                <th>Identifikator</th>
+                <th>Lokacija odrzavanja</th>
+                <th>Vreme odrzavanja</th>
+                <th>Sudija</th>
+                <th>Tip ustanove</th>
+                <th>Broj sudnice</th>
+                <th>Tuzilac</th>
+                <th>Tuzeni</th>
+                <th>Napomena</th>
+                <th>Tip postupka</th>
+            </tr>
+            @foreach (var parnica in Model)
+            {
+                <tr>
+                    <td>
+                        @parnica.IdentifikatorPostupka
+                    </td>
+                    <td class="col-md-1">
+                        @parnica.LokacijaOdrzavanja.Naslov
+                    </td>
+                    <td class="col-md-1">
+                        @parnica.VremeOdrzavanja
+                    </td>
+                    <td>
+                        @parnica.Sudija.Ime
+                    </td>
+                    <td>
+                        @parnica.TipUstanove
+                    </td>
+                    <td>
+                        @parnica.BrojSudnice
+                    </td>
+                    <td>
+                        @parnica.Tuzilac.Ime
+                    </td>
+                    <td>
+                        @parnica.Tuzeni.Ime
+                    </td>
+                    <td>
+                        @parnica.Napomena
+                    </td>
+                    <td>
+                        @parnica.TipPostupka.Naslov
+                    </td>
+                  
+                </tr>
+
+            }
+        </table>
+    
+}
