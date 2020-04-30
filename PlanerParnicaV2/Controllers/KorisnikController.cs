@@ -35,14 +35,21 @@ namespace PlanerParnicaV2.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Login()
+        public async Task<IActionResult> Login()
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("MojeParnice", "Korisnik");
+                if (User.IsInRole("Korisnik"))
+                    return RedirectToAction("MojeParnice", "Korisnik");
+                else
+                    return RedirectToAction("ListKorisnici", "Admin");
             }
+            var admins = await userManager.GetUsersInRoleAsync("Administrator");
+            if (admins.Count == 0)
+                return RedirectToAction("FirstAdmin", "Korisnik");
             return View();
         }
+        
 
         [HttpPost]
         [AllowAnonymous]
@@ -57,7 +64,7 @@ namespace PlanerParnicaV2.Controllers
                     {
                         return Redirect(returnUrl);
                     }
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("MojeParnice", "Korisnik");
                 }
                 ModelState.AddModelError(string.Empty, "Invalid login attempt!");
             }
@@ -67,14 +74,55 @@ namespace PlanerParnicaV2.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Korisnik");
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> FirstAdmin()
+        {
+            var admini = await userManager.GetUsersInRoleAsync("Administrator");
+            if (admini.Count > 0)
+                RedirectToAction("Login", "Korisnik");
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> FirstAdmin(CreateKorisnikViewModel model)
+        {
+            var admini = await userManager.GetUsersInRoleAsync("Administrator");
+            if (admini.Count > 0)
+                RedirectToAction("Login", "Korisnik");
+            if (ModelState.IsValid)
+            {
+                var user = new Korisnik
+                {
+                    UserName = model.Username,
+                    Ime = model.Ime,
+                    Prezime = model.Prezime
+                };
+                var result = await userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    if (model.IsKorisnik)
+                    {
+                        await userManager.AddToRoleAsync(user, "Korisnik");
+                    }
+                    await userManager.AddToRoleAsync(user, "Administrator");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+            }
+            return View();
         }
         //----------------------------------Parnice---------------------------------
         [HttpGet]
         public IActionResult CreateParnica()
         {
             ParnicaViewModel model = new ParnicaViewModel();
-            //model.SviAdvokati = await userManager.GetUsersInRoleAsync("Korisnik");
             model.TipoviPostupaka = context.TipoviPostupaka.ToList();
             model.SveLokacije = context.Lokacije.ToList();
             model.SviKontakti = context.Kontakti.ToList();
@@ -160,6 +208,9 @@ namespace PlanerParnicaV2.Controllers
         public async Task<IActionResult> MojeParnice(MojeParniceViewModel model)
         {
             var user = await userManager.GetUserAsync(User);
+            bool result = await userManager.IsInRoleAsync(user, "Korisnik");
+            if (!result)
+                return RedirectToAction("ListParnice", "Admin");
             return View(services.SearchParnice(model, user));
         }
     }

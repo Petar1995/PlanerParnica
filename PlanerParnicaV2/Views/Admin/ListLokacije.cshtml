@@ -6,6 +6,14 @@
 <a asp-action="CreateLokacija" asp-controller="Admin" class="btn btn-primary">
     Dodaj lokaciju
 </a>
+<div class="col-md-12">
+    <div class="col-md-1">
+        <b>Id</b>
+    </div>
+    <div class="col-md-1">
+        <b>Naziv</b>
+    </div>
+</div>
 @if (Model.Any())
 {
     <div asp-validation-summary="All"></div>

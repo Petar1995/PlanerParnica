@@ -38,14 +38,12 @@ namespace PlanerParnicaV2.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult CreateRole()
         {
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> CreateRole(CreateRoleViewModel model)
         {
             if (ModelState.IsValid)
@@ -57,7 +55,7 @@ namespace PlanerParnicaV2.Controllers
                 var result = await roleManager.CreateAsync(identityRole);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("ListRoles", "Admin");
                 }
                 foreach (var error in result.Errors)
                 {
@@ -66,21 +64,6 @@ namespace PlanerParnicaV2.Controllers
             }
             return View(model);
         }
-
-        //[AcceptVerbs("Get", "Post")]
-        //public async Task<IActionResult> KorisnikExists(CreateViewModel korisnik)
-        //{
-        //    var user = await userManager.FindByNameAsync(korisnik.Username);
-        //    if (user == null)
-        //    {
-        //        return Json(true);
-        //    }
-        //    else
-        //    {
-        //        return Json($"Korisnik {korisnik.Username} vec postoji!");
-        //    }
-        //}
-
         [HttpGet]
         public IActionResult CreateKorisnik()
         {
@@ -123,7 +106,6 @@ namespace PlanerParnicaV2.Controllers
         [HttpGet]
         public async Task<IActionResult> ListKorisnici()
         {
-            //ListKorisniciViewModel list = new ListKorisniciViewModel();
             var korisnici = await userManager.GetUsersInRoleAsync("Korisnik");
             return View(korisnici);
         }
@@ -131,7 +113,6 @@ namespace PlanerParnicaV2.Controllers
         [HttpGet]
         public async Task<IActionResult> ListAdmin()
         {
-            //ListKorisniciViewModel list = new ListKorisniciViewModel();
             var korisnici = await userManager.GetUsersInRoleAsync("Administrator");
             return View(korisnici);
         }
@@ -451,7 +432,6 @@ namespace PlanerParnicaV2.Controllers
             services.EditKontakt(kontakt, model);
             return RedirectToAction("ListKontakti", "Admin");
         }
-
         [HttpGet]
         public IActionResult ListKompanije()
         {
@@ -494,7 +474,7 @@ namespace PlanerParnicaV2.Controllers
                 ViewBag.ErrorMessage = $"Kompanija sa Id: {model.Id} ne postoji!";
                 return View();
             }
-            services.UptadeKompanija(kompanija, model);
+            services.UpdateKompanija(kompanija, model);
             return RedirectToAction("ListKompanije", "Admin");
         }
     }

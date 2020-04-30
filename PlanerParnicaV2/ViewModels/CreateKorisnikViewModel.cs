@@ -15,7 +15,6 @@ namespace PlanerParnicaV2.ViewModels
 
         [Required]
         [DisplayName("Korisnicko ime")]
-        //[Remote(action: "KorisnikExists", controller: "Korisnik")] ovo je za proveru skripta, baguje?
         public string Username { get; set; }
 
         [Required]

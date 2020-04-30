@@ -10,7 +10,6 @@ namespace PlanerParnicaV2.Models
     {
         public string Ime { get; set; }
         public string Prezime { get; set; }
-
         public List<KorisnikParnica> Parnice { get; set; }
     }
 }

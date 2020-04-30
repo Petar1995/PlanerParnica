@@ -1,5 +1,5 @@
 ﻿@model MojeParniceViewModel
-@{
+@{ 
     ViewData["Title"] = "MojeParnice";
 }
 
@@ -51,45 +51,44 @@
         </tr>
         @foreach (var parnica in Model.Parnice)
         {
-    <tr>
-        <td>
-            @parnica.Parnica.IdentifikatorPostupka
-        </td>
-        <td class="col-md-1">
-            @parnica.Parnica.LokacijaOdrzavanja.Naslov
-        </td>
-        <td class="col-md-1">
-            @parnica.Parnica.VremeOdrzavanja
-        </td>
-        <td>
-            @parnica.Parnica.Sudija.Ime
-        </td>
-        <td>
-            @parnica.Parnica.TipUstanove
-        </td>
-        <td>
-            @parnica.Parnica.BrojSudnice
-        </td>
-        <td>
-            @parnica.Parnica.Tuzilac.Ime
-        </td>
-        <td>
-            @parnica.Parnica.Tuzeni.Ime
-        </td>
-        <td>
-            @parnica.Parnica.Napomena
-        </td>
-        <td>
-            @parnica.Parnica.TipPostupka.Naslov
-        </td>
-        <td class="col-md-2" style="align-self:end">
-            <form asp-action="DeleteParnica" asp-controller="Korisnik" asp-route-Id="@parnica.Parnica.Id" method="post">
-                <a asp-action="EditParnica" asp-controller="Korisnik" asp-route-Id="@parnica.Parnica.Id" class="btn btn-primary">Izmeni</a>
-                <button type="submit" class="btn btn-danger">Obrisi</button>
-            </form>
-        </td>
-    </tr>
-
+            <tr>
+                <td>
+                    @parnica.Parnica.IdentifikatorPostupka
+                </td>
+                <td class="col-md-1">
+                    @parnica.Parnica.LokacijaOdrzavanja.Naslov
+                </td>
+                <td class="col-md-1">
+                    @parnica.Parnica.VremeOdrzavanja
+                </td>
+                <td>
+                    @parnica.Parnica.Sudija.Ime
+                </td>
+                <td>
+                    @parnica.Parnica.TipUstanove
+                </td>
+                <td>
+                    @parnica.Parnica.BrojSudnice
+                </td>
+                <td>
+                    @parnica.Parnica.Tuzilac.Ime
+                </td>
+                <td>
+                    @parnica.Parnica.Tuzeni.Ime
+                </td>
+                <td>
+                    @parnica.Parnica.Napomena
+                </td>
+                <td>
+                    @parnica.Parnica.TipPostupka.Naslov
+                </td>
+                <td class="col-md-2" style="align-self:end">
+                    <form asp-action="DeleteParnica" asp-controller="Korisnik" asp-route-Id="@parnica.Parnica.Id" method="post">
+                        <a asp-action="EditParnica" asp-controller="Korisnik" asp-route-Id="@parnica.Parnica.Id" class="btn btn-primary">Izmeni</a>
+                        <button type="submit" class="btn btn-danger">Obrisi</button>
+                    </form>
+                </td>
+            </tr>
         }
     </table>
 <div id="Kalendar">

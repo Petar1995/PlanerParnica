@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "iAlD9cicYJIyZr8k2xNXqzUyf+qD9Nlsmy3PyN9e/i6x6DPUtp9SbVY/GqEleB3osuWHYUwrDPYddsB/aLERcg==",
+  "dgSpecHash": "EV8a9eTdjC4y5u+p2uNSRftp1KpzWrYjDzsxaZ3UaTkqA3Y/iRjips18DKkv988OrgaouFFyproGCeW6vk22jw==",
   "success": true,
   "projectFilePath": "D:\\Jobz\\Dilignet\\Aplikacija2\\PlanerParnicaV2\\PlanerParnicaV2\\PlanerParnicaV2.csproj",
   "expectedPackageFiles": [
@@ -170,6 +170,7 @@
     "C:\\Users\\Petar\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.1.0\\microsoft.netcore.dotnethostresolver.2.1.0.nupkg.sha512",
     "C:\\Users\\Petar\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.0\\microsoft.netcore.platforms.2.1.0.nupkg.sha512",
     "C:\\Users\\Petar\\.nuget\\packages\\microsoft.netcore.targets\\2.1.0\\microsoft.netcore.targets.2.1.0.nupkg.sha512",
+    "C:\\Users\\Petar\\.nuget\\packages\\microsoft.typescript.msbuild\\3.8.3\\microsoft.typescript.msbuild.3.8.3.nupkg.sha512",
     "C:\\Users\\Petar\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\2.1.10\\microsoft.visualstudio.web.codegeneration.2.1.10.nupkg.sha512",
     "C:\\Users\\Petar\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.contracts\\2.1.10\\microsoft.visualstudio.web.codegeneration.contracts.2.1.10.nupkg.sha512",
     "C:\\Users\\Petar\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\2.1.10\\microsoft.visualstudio.web.codegeneration.core.2.1.10.nupkg.sha512",

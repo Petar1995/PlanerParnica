@@ -89,7 +89,7 @@ namespace PlanerParnicaV2.Services
             context.Update(parnica);
             context.SaveChanges();
         }
-        public void UptadeKompanija(Kompanija kompanija, KompanijaViewModel model)
+        public void UpdateKompanija(Kompanija kompanija, KompanijaViewModel model)
         {
             kompanija.Naziv = model.Naziv;
             kompanija.Adresa = model.Adresa;

@@ -7,14 +7,28 @@
 </a>
 @if (Model.Any())
 {
+    <div class="col-md-12">
+        <div class="col-md-2">
+            <b>Korisnicko ime</b>
+        </div>
+        <div class="col-md-2">
+            <b>Ime</b>
+        </div>
+        <div class="col-md-2">
+            <b>Prezime</b>
+        </div>
+    </div>
     <div asp-validation-summary="All"></div>
     foreach (var korisnik in Model)
     {
         <div class="col-md-12">
-            <div class="col-md-1">
+            <div class="col-md-2">
+                @korisnik.UserName
+            </div>
+            <div class="col-md-2">
                 @korisnik.Ime
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
                 @korisnik.Prezime
             </div>
             <div class="col-md-2" style="align-self:end">
