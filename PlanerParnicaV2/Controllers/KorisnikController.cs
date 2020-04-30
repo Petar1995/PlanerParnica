@@ -20,16 +20,19 @@ namespace PlanerParnicaV2.Controllers
         private readonly SignInManager<Korisnik> signInManager;
         private readonly AppDbContext context;
         private readonly Services.Services services;
+        private readonly RoleManager<IdentityRole> roleManager;
 
         public KorisnikController(UserManager<Korisnik> userManager,
                                     SignInManager<Korisnik> signInManager,
                                     AppDbContext context,
-                                    Services.Services services)
+                                    Services.Services services,
+                                    RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.context = context;
             this.services = services;
+            this.roleManager = roleManager;
         }
 
 
@@ -89,6 +92,24 @@ namespace PlanerParnicaV2.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> FirstAdmin(CreateKorisnikViewModel model)
         {
+            var roleResult = await roleManager.RoleExistsAsync("Administrator");
+            if(!roleResult)
+            {
+                IdentityRole AdminRole = new IdentityRole
+                {
+                    Name = "Administrator"
+                };
+                await roleManager.CreateAsync(AdminRole);
+            }
+            roleResult = await roleManager.RoleExistsAsync("Korisnik");
+            if (!roleResult)
+            {
+                IdentityRole KorisnikRole = new IdentityRole
+                {
+                    Name = "Korisnik"
+                };
+                await roleManager.CreateAsync(KorisnikRole);
+            }
             var admini = await userManager.GetUsersInRoleAsync("Administrator");
             if (admini.Count > 0)
                 RedirectToAction("Login", "Korisnik");
@@ -116,7 +137,7 @@ namespace PlanerParnicaV2.Controllers
                 }
 
             }
-            return View();
+            return RedirectToAction("Login","Korisnik");
         }
         //----------------------------------Parnice---------------------------------
         [HttpGet]
