@@ -76,7 +76,7 @@ using Microsoft.AspNetCore.Identity;
 #line default
 #line hidden
             BeginContext(74, 102, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4ec97428c69346c080737f3a7427e7ec", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a7c2f8c27184dddbd28543ecdbd3c29", async() => {
                 BeginContext(151, 21, true);
                 WriteLiteral("\r\n    Dodaj kontakt\r\n");
                 EndContext();
@@ -101,7 +101,7 @@ using Microsoft.AspNetCore.Identity;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(178, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fdbbebb63a7f458fa0abff4d80afdb2b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "107a9963fa5f41acb54fb9b39548a012", async() => {
                 BeginContext(255, 23, true);
                 WriteLiteral("\r\n    Lista kompanija\r\n");
                 EndContext();
@@ -158,7 +158,7 @@ using Microsoft.AspNetCore.Identity;
     ");
             EndContext();
             BeginContext(891, 40, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "00da9bfbff394442a517293b6172aebb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "64ba54fad45c406d8479e575ed08af3f", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationSummaryTagHelper>();
@@ -288,12 +288,12 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper.ValidationSumma
             WriteLiteral("\r\n\r\n    <div class=\"col-md-2\" style=\"align-self:end\">\r\n        ");
             EndContext();
             BeginContext(1783, 291, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c62c048cb2024d0cb1d5f2980ee4bb28", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b59d554947f4d62bfcbd0568f131099", async() => {
                 BeginContext(1857, 14, true);
                 WriteLiteral("\r\n            ");
                 EndContext();
                 BeginContext(1871, 112, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7f4d32069c07489493bd670f6e758b6d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e5f9373a20f4798a0e747ec8082eaeb", async() => {
                     BeginContext(1973, 6, true);
                     WriteLiteral("Izmeni");
                     EndContext();

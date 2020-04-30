@@ -14,17 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200427204828_ParnicaUpdate.cs" />
-    <Compile Remove="Migrations\20200427204828_ParnicaUpdate.Designer.cs" />
-    <Compile Remove="Migrations\20200427214054_DbContextUpdate.cs" />
-    <Compile Remove="Migrations\20200427214054_DbContextUpdate.Designer.cs" />
-    <Compile Remove="Migrations\20200427214320_DbContextUpdate.cs" />
-    <Compile Remove="Migrations\20200427214320_DbContextUpdate.Designer.cs" />
-    <Compile Remove="Migrations\20200428155308_KorisnikParnicaVeza.cs" />
-    <Compile Remove="Migrations\20200428155308_KorisnikParnicaVeza.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.8.3">
